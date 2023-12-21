@@ -1,0 +1,18 @@
+language: csharp
+mono: none
+sudo: required
+dist: xenial
+dotnet: 3.1
+script:
+- dotnet build CoinTrackApi.sln
+- dotnet test CoinTrackApi.sln
+global:
+- DOTNET_SKIP_FIRST_TIME_EXPERIENCE=true
+- DOTNET_CLI_TELEMETRY_OPTOUT=1
+deploy:
+  app: stackpond-cointrack-api
+  provider: heroku
+  api_key:
+    secure: B54RfVUy+g2q9bIa5uMBCr5DSY1zqxuJ06cqXVjcF8GAgumvDVmTiMkmrZXt/yKN041VoPZ642eYD57DDrTsqSqgjWGyEKFbORQvaME8O+03OzMTYuVdyvu1I2Csxv3693b0y58CrJAgsTapbBL6dSe7cQQdU+5T7om2TTINLCfR3WwvJASL5Lj07JOtQE59AI/nCqXLQG8LLjIxy2sNB9hmLrkexqldiyJL2wTMIQy4A7AAf42CWr1QzEWGokxuHmle274X2FQVtGBu+Tq97HWkFiLt3EidqIxqzZSsJ/3fAn4BRSS8r7YHObVo18TMvId9F30TmC+c5WuVIQVwdxcAlhMt5J41qUkUbrTHVqm7GNedNyz9nP2ICbmJNDMlqr+o3ZJFrcbpUlPZB8eUs4TR7qBq07Xz3ER4wfnMdLRxk0DiONYle5SvHj/XQhmg85MzzUiJGErB8DWpirbPnBH6VYJV0Ge1gGk9sStNT90Yn7tClxq4c4tfuxD5CqqvNN2tNmjrrQW7Nux5comQM8ldKxNVzArGpR7WVYIUAzubCcwe38+PDTzoWehJN9ggPV8+cZxNlemV8CzREaobNWWQnURvI33W3quGl4uGiEMJz6fznpMfiD9lk0CXqzk29frnGP5wWrKWwrsWxxX/8u/yMGfBVJQ2NKI+Nhp2dHw=
+  on:
+    branch: main
